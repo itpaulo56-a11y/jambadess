@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>The Bathroom Math | FEMICORE-adb on FemiCore</title>
+<meta name="description" content="If you've started planning outings around bathrooms, this is worth five quiet minutes before you decide anything.">
+<meta property="og:title" content="The Bathroom Math">
+<meta property="og:description" content="FEMICORE-adb for women who've started planning around bathrooms without saying so out loud.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://SEU-DOMINIO-AQUI/images/femicore-product.png">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="The Bathroom Math">
+<meta property="twitter:description" content="A private note for women who've started planning around bathrooms without saying so out loud.">
+<meta property="twitter:image" content="https://SEU-DOMINIO-AQUI/images/femicore-product.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --bg-soft:#F7F8FC;
+    --panel:#FFFFFF;
+    --border:#E7E9F2;
+    --border-soft:#EFF1F8;
+    --ink:#161A2E;
+    --ink-dim:#565B75;
+    --ink-faint:#8A8FA8;
+    --indigo:#5B4FE9;
+    --indigo-dark:#4436D1;
+    --indigo-pale:#EEECFD;
+    --indigo-100:#E1DEFC;
+    --amber:#F5A623;
+    --amber-pale:#FFF3DF;
+    --green:#159A6C;
+    --green-dark:#0F7D57;
+    --radius:18px;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --shadow-sm:0 1px 2px rgba(22,26,46,0.04), 0 2px 10px rgba(22,26,46,0.05);
+    --shadow-lg:0 10px 34px rgba(91,79,233,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg); color:var(--ink); font-family:var(--sans);
+    line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; width:100%;
+    position:relative;
+  }
+  a{color:inherit;}
+  img,svg{display:block; max-width:100%;}
+  .wrap{max-width:1140px; margin:0 auto; padding:0 24px; position:relative; z-index:2;}
+  .wrap-narrow{max-width:720px; margin:0 auto; padding:0 24px; position:relative; z-index:2;}
+
+  /* ambient blobs */
+  .blob{position:absolute; border-radius:50%; filter:blur(60px); opacity:.35; z-index:0; pointer-events:none;}
+  .blob-1{width:420px; height:420px; background:var(--indigo-100); top:-120px; right:-100px; animation:float1 16s ease-in-out infinite;}
+  .blob-2{width:340px; height:340px; background:var(--amber-pale); bottom:-100px; left:-80px; animation:float2 18s ease-in-out infinite;}
+  @keyframes float1{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-30px,30px) scale(1.08);}}
+  @keyframes float2{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(25px,-25px) scale(1.06);}}
+
+  .topbar{padding:18px 0; border-bottom:1px solid var(--border-soft); background:rgba(255,255,255,.85); backdrop-filter:blur(10px); position:sticky; top:0; z-index:50;}
+  .topbar .wrap{display:flex; justify-content:space-between; align-items:center;}
+  .brand{display:flex; align-items:center; gap:9px; font-weight:800; font-size:15px; color:var(--indigo-dark);}
+  .brand .dot{width:8px; height:8px; border-radius:50%; background:var(--green); box-shadow:0 0 0 4px var(--green-light,#E6F5EF);}
+  .readtime{font-size:12.5px; color:var(--ink-faint); font-weight:600;}
+
+  section{padding:72px 0; position:relative;}
+  .sec-soft{background:var(--bg-soft);}
+  .eyebrow{
+    font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--indigo);
+    font-weight:800; display:flex; align-items:center; gap:9px; margin-bottom:16px;
+  }
+  .eyebrow::before{content:''; width:20px; height:3px; background:linear-gradient(90deg,var(--indigo),var(--amber)); border-radius:3px;}
+  h1{
+    font-weight:900; font-size:clamp(32px,4.6vw,48px);
+    line-height:1.15; letter-spacing:-.02em; color:var(--ink); margin-bottom:20px;
+  }
+  h1 span.hl{
+    background:linear-gradient(90deg, var(--indigo), var(--indigo-dark));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    position:relative;
+  }
+  h2{
+    font-weight:900; font-size:clamp(25px,3vw,32px);
+    line-height:1.28; margin-bottom:16px; color:var(--ink); max-width:22ch; letter-spacing:-.015em;
+  }
+  p{font-size:16px; color:var(--ink-dim); max-width:56ch;}
+  .lead{font-size:17.5px; color:var(--ink-dim); max-width:48ch; margin-bottom:28px;}
+  strong{color:var(--ink); font-weight:700;}
+
+  /* HERO */
+  .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:52px; align-items:center;}
+  .cta-btn{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--green); color:#FFFFFF; font-weight:700; font-size:16px;
+    padding:17px 28px; border-radius:12px; text-decoration:none; border:1px solid var(--green);
+    box-shadow:0 6px 20px rgba(21,154,108,0.3);
+    transition:background .2s ease, transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s ease;
+    position:relative; overflow:hidden;
+  }
+  .cta-btn::after{
+    content:''; position:absolute; inset:0; background:rgba(255,255,255,.25);
+    transform:translateX(-110%) skewX(-15deg); transition:transform .5s ease;
+  }
+  .cta-btn:hover::after{transform:translateX(110%) skewX(-15deg);}
+  .cta-btn:hover{background:var(--green-dark); border-color:var(--green-dark); transform:translateY(-2px); box-shadow:0 10px 26px rgba(21,154,108,0.36);}
+  .cta-btn svg{width:18px; height:18px; flex-shrink:0;}
+  .cta-sub{font-size:12.5px; color:var(--ink-faint); margin-top:12px;}
+  .trust-row{display:flex; gap:22px; margin-top:28px; flex-wrap:wrap;}
+  .trust-item{display:flex; align-items:center; gap:8px; font-size:13px; color:var(--ink-dim); font-weight:600;}
+  .trust-item svg{width:17px; height:17px; color:var(--green); flex-shrink:0;}
+
+  /* image-ready frame */
+  .img-frame{
+    position:relative; border-radius:var(--radius); overflow:hidden;
+    background:linear-gradient(135deg, var(--indigo-pale), var(--amber-pale));
+    border:1.5px dashed var(--indigo-100);
+    display:flex; align-items:center; justify-content:center; flex-direction:column; gap:10px;
+    text-align:center; padding:20px;
+  }
+  .img-frame::before{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(115deg, transparent 20%, rgba(255,255,255,.55) 40%, transparent 60%);
+    background-size:220% 100%; animation:sheen 5s ease-in-out infinite;
+  }
+  @keyframes sheen{0%{background-position:180% 0;} 100%{background-position:-40% 0;}}
+  .img-frame-icon{
+    width:44px; height:44px; border-radius:50%; background:#FFFFFF; display:flex; align-items:center; justify-content:center;
+    box-shadow:var(--shadow-sm); position:relative; z-index:1;
+  }
+  .img-frame-icon svg{width:20px; height:20px; color:var(--indigo);}
+  .img-frame-label{font-size:12.5px; font-weight:700; color:var(--indigo-dark); position:relative; z-index:1;}
+  .img-frame-sub{font-size:11.5px; color:var(--ink-faint); position:relative; z-index:1;}
+  .img-frame.filled{padding:0; border-style:solid; border-color:var(--border);}
+  .img-frame.filled::before{display:none;}
+  .img-frame.filled img{width:100%; height:100%; object-fit:cover; display:block;}
+  .img-frame.hero-frame{aspect-ratio:4/5;}
+  .img-frame.wide-frame{aspect-ratio:16/9;}
+
+  .hero-card{
+    background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:26px 24px;
+    box-shadow:var(--shadow-lg); margin-top:20px;
+  }
+  .hero-card-label{font-size:12px; letter-spacing:.04em; text-transform:uppercase; color:var(--indigo); margin-bottom:14px; font-weight:800;}
+  .hero-card p.mini{font-size:13.5px; color:var(--ink-dim); margin:0;}
+
+  /* recognition grid section */
+  .recog-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .recog-card{
+    background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px;
+    display:flex; gap:14px; align-items:flex-start; box-shadow:var(--shadow-sm);
+    transition:transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, border-color .25s ease;
+  }
+  .recog-card:hover{transform:translateY(-4px); box-shadow:var(--shadow-lg); border-color:var(--indigo-100);}
+  .recog-icon{
+    width:38px; height:38px; border-radius:11px; background:var(--indigo-pale); display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .recog-icon svg{width:18px; height:18px; color:var(--indigo);}
+  .recog-card p{font-size:14.5px; color:var(--ink-dim); max-width:none;}
+  .recog-foot{
+    margin-top:18px; padding:16px 18px; background:var(--indigo-pale); border-radius:12px; font-size:13.5px; color:var(--indigo-dark); font-weight:600;
+  }
+
+  /* flow */
+  .flow-grid{display:grid; grid-template-columns:1fr auto 1fr; gap:20px; align-items:center;}
+  .flow-card{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow-sm);}
+  .flow-card-tag{font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px; font-weight:800;}
+  .flow-card p{font-size:14.5px; color:var(--ink-dim); max-width:none;}
+  .flow-arrow{color:var(--amber); flex-shrink:0;}
+  .flow-arrow svg{width:26px; height:26px;}
+
+  /* mechanism split */
+  .mech-grid{display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center;}
+  .label-frame{
+    display:block; margin-top:36px; position:relative; border-radius:var(--radius);
+    overflow:hidden; background:#FFFFFF; border:1px solid var(--border); box-shadow:var(--shadow-sm);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .label-frame:hover{transform:translateY(-3px); box-shadow:var(--shadow-lg);}
+  .label-frame img{width:100%; height:auto; display:block;}
+  .label-frame-tag{
+    position:absolute; bottom:14px; right:14px; background:rgba(22,26,46,.82); color:#fff;
+    font-size:12px; font-weight:700; padding:8px 14px; border-radius:20px; backdrop-filter:blur(4px);
+  }
+
+  /* compare */
+  .compare-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  .compare-card{
+    background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:26px;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .compare-card:hover{transform:translateY(-3px);}
+  .compare-card.highlight{border-color:var(--indigo); background:linear-gradient(160deg, var(--indigo-pale), #FFFFFF); box-shadow:var(--shadow-lg);}
+  .compare-tag{font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; font-weight:800; margin-bottom:14px; display:flex; align-items:center; gap:8px;}
+  .compare-tag svg{width:15px; height:15px;}
+  .compare-card:not(.highlight) .compare-tag{color:var(--ink-faint);}
+  .compare-card.highlight .compare-tag{color:var(--indigo);}
+  .compare-card h4{font-size:19px; font-weight:800; margin-bottom:10px; color:var(--ink);}
+  .compare-card p{font-size:14.5px; color:var(--ink-dim); max-width:none;}
+
+  .callout{
+    background:var(--amber-pale); border:1px solid var(--border); border-left:4px solid var(--amber);
+    border-radius:var(--radius); padding:24px 26px; margin-top:24px;
+  }
+  .callout p{margin-bottom:0; font-size:14.5px; max-width:none; color:var(--ink-dim);}
+  .callout p.small{font-size:12.5px; color:var(--ink-faint); margin-top:12px;}
+
+  /* preframe */
+  .preframe{
+    display:flex; gap:16px; align-items:flex-start;
+    background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:24px 26px;
+    box-shadow:var(--shadow-sm);
+  }
+  .preframe svg{width:22px; height:22px; color:var(--indigo); flex-shrink:0; margin-top:1px;}
+  .preframe p{margin-bottom:0; font-size:14.5px; max-width:none;}
+
+  /* final cta */
+  .final-cta{
+    position:relative; overflow:hidden;
+    background:linear-gradient(135deg, var(--indigo-dark), var(--indigo));
+    border-radius:24px; padding:60px 36px; text-align:center;
+  }
+  .final-cta::before{
+    content:''; position:absolute; width:300px; height:300px; border-radius:50%;
+    background:rgba(255,255,255,.08); top:-120px; right:-80px;
+  }
+  .final-cta::after{
+    content:''; position:absolute; width:220px; height:220px; border-radius:50%;
+    background:var(--amber); opacity:.18; bottom:-100px; left:-60px;
+  }
+  .final-cta .eyebrow{color:var(--amber); justify-content:center;}
+  .final-cta .eyebrow::before{background:var(--amber);}
+  .final-cta h2{margin:0 auto 14px; max-width:22ch; color:#FFFFFF; position:relative; z-index:1;}
+  .final-cta p{color:rgba(255,255,255,.78); max-width:48ch; margin:0 auto 28px; position:relative; z-index:1;}
+  .final-cta .cta-btn{position:relative; z-index:1; background:#FFFFFF; color:var(--indigo-dark); border-color:#FFFFFF;}
+  .final-cta .cta-btn:hover{background:var(--amber-pale);}
+
+  footer{padding:44px 0 60px; border-top:1px solid var(--border-soft); background:var(--bg-soft);}
+  .foot-disclosure{font-size:12px; color:var(--ink-faint); line-height:1.7; max-width:780px;}
+  .foot-links{display:flex; gap:18px; margin-top:20px; font-size:12px; color:var(--ink-faint); font-weight:600;}
+
+  .sticky-cta{
+    position:fixed; bottom:0; left:0; right:0; z-index:60; background:var(--bg);
+    border-top:1px solid var(--border); padding:12px 16px; display:none;
+    align-items:center; justify-content:center; box-shadow:0 -6px 20px rgba(22,26,46,0.08);
+  }
+  .sticky-cta .cta-btn{width:100%; justify-content:center;}
+
+  .reveal{opacity:0; transform:translateY(20px); transition:opacity .7s cubic-bezier(.2,.8,.2,1), transform .7s cubic-bezier(.2,.8,.2,1);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .stagger.in > *{opacity:1; transform:translateY(0);}
+  .stagger > *{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .stagger.in > *:nth-child(1){transition-delay:.05s;}
+  .stagger.in > *:nth-child(2){transition-delay:.15s;}
+  .stagger.in > *:nth-child(3){transition-delay:.25s;}
+  .stagger.in > *:nth-child(4){transition-delay:.35s;}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr; gap:34px;}
+    .recog-grid{grid-template-columns:1fr;}
+    .flow-grid{grid-template-columns:1fr; gap:14px;}
+    .flow-arrow{transform:rotate(90deg); margin:0 auto;}
+    .mech-grid{grid-template-columns:1fr; gap:26px;}
+    .mech-grid .img-frame{order:-1;}
+    .compare-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:640px){
+    section{padding:48px 0;}
+    body{padding-bottom:74px;}
+    .sticky-cta{display:flex;}
+    .final-cta{padding:44px 22px;}
+    .blob{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important; scroll-behavior:auto !important; animation:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ EDIT ME ============
+CTA_LINK is pre-filled with the FemiCore HopLink you generated. Swap it
+for a new one if you create channel-specific tracking links later.
+
+IMAGE SLOTS: every element with class "img-frame" is a placeholder.
+Replace its inner content with a real <img src="..." alt="..."> from
+the FemiCore affiliate resources kit to drop in official product photos.
+==================================== -->
+<script>
+  const CTA_LINK = "https://500f4zi347z52wablht6ygpu2n.hop.clickbank.net";
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("[data-cta]").forEach(el => el.href = CTA_LINK);
+  });
+</script>
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>FEMICORE-adb</div>
+    <span class="readtime">10 min read</span>
+  </div>
+</div>
+
+<section>
+  <div class="wrap hero-grid">
+    <div class="reveal in">
+      <p class="eyebrow">Before you plan your next outing</p>
+      <h1>You've started checking where the bathroom is <span class="hl">before</span> you agree to go anywhere.</h1>
+      <p class="lead">Not because anyone asked. Just a habit now — the quiet math you do before a car ride, a dinner, a walk that's a little too far from home.</p>
+      <a href="#" data-cta class="cta-btn">
+        See the official page
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <p class="cta-sub">Independent note, not the manufacturer's own site. Contains an affiliate link — we may earn a commission if you buy, at no extra cost to you.</p>
+      <div class="trust-row">
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>Doctor-endorsed formulation</div>
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>Built around a named root cause</div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="img-frame hero-frame filled">
+        <img src="images/femicore-product.png" alt="FemiCore bladder-support supplement bottle">
+      </div>
+      <div class="hero-card">
+        <p class="hero-card-label">Why this note exists</p>
+        <p class="mini">Not a sales pitch — a place to see the pattern named clearly before you land on a page that's trying to sell you something.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-soft">
+  <div class="wrap">
+    <p class="eyebrow">Does any of this sound familiar?</p>
+    <h2>You've probably gotten good at managing it.</h2>
+    <p class="lead">That's not the same as it being fine.</p>
+
+    <div class="recog-grid stagger reveal">
+      <div class="recog-card">
+        <div class="recog-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg></div>
+        <p>A laugh, a sneeze, a jump with a grandchild — then a small moment of dread right after.</p>
+      </div>
+      <div class="recog-card">
+        <div class="recog-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg></div>
+        <p>Liners that quietly became part of the daily routine, not just for "certain days."</p>
+      </div>
+      <div class="recog-card">
+        <div class="recog-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg></div>
+        <p>Turning down a long car trip you used to love, and calling it "not really my thing anymore."</p>
+      </div>
+      <div class="recog-card">
+        <div class="recog-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg></div>
+        <p>A mental map of every bathroom in every place you regularly go.</p>
+      </div>
+    </div>
+    <div class="recog-foot reveal">"You've gotten good at managing it. That's not the same as it being fine."</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">What tends to happen next</p>
+    <h2>It rarely stays where it started.</h2>
+    <p class="lead">Most women don't bring it up with a doctor until it's already reshaped a lot of ordinary days — not because it's not worth mentioning, but because it's genuinely awkward to be the one who brings it up first.</p>
+
+    <div class="flow-grid">
+      <div class="flow-card reveal">
+        <p class="flow-card-tag">Where it starts</p>
+        <p>Checking bathroom locations before agreeing to plans. Small, private, easy to shrug off.</p>
+      </div>
+      <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+      <div class="flow-card reveal">
+        <p class="flow-card-tag">Where it usually ends up</p>
+        <p>Fewer invitations accepted, favorite trips quietly dropped, a smaller life — one decline at a time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-soft">
+  <div class="wrap">
+    <div class="reveal" style="max-width:720px;">
+      <p class="eyebrow">What's actually going on</p>
+      <h2>The common assumption is wrong for a lot of women.</h2>
+      <p>Most people assume this is just "a weak bladder" or an inevitable part of aging. The formulation behind <strong>FemiCore</strong> is built on a different starting point: that for a meaningful number of women, this traces back to an <strong>imbalance in the urinary microbiome</strong> — the bacterial environment that keeps that system working the way it's supposed to.</p>
+      <p style="margin-top:16px;">FemiCore is a supplement developed around that idea, and it's the reason the product is positioned by its formulator as targeting the root pattern rather than just the moment of leakage itself. It's endorsed by a physician with a substantial following built around women's health specifically — worth knowing before you write this off as another supplement with a slick page.</p>
+    </div>
+    <a href="images/femicore-mechanism.jpg" target="_blank" rel="noopener" class="reveal label-frame" aria-label="Open full-size supplement facts label in a new tab">
+      <img src="images/femicore-mechanism.jpg" alt="FemiCore supplement facts label showing herbal and probiotic blend ingredients">
+      <span class="label-frame-tag">Tap to view full label</span>
+    </a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Why the distinction matters</p>
+    <h2>Managing the symptom isn't the same as addressing the cause.</h2>
+    <div class="compare-grid">
+      <div class="compare-card reveal">
+        <p class="compare-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/></svg>Most of what's out there</p>
+        <h4>Treats the leak as the problem</h4>
+        <p>Heavier pads, workarounds, damage control. If the microbiome explanation holds for your situation, none of this was ever going to touch the actual cause.</p>
+      </div>
+      <div class="compare-card highlight reveal">
+        <p class="compare-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>FemiCore's approach</p>
+        <h4>Targets the named mechanism</h4>
+        <p>A formulation built around a specific, stated cause — not a vague promise of relief.</p>
+      </div>
+    </div>
+    <div class="callout reveal">
+      <p>To be direct about what this is and isn't: FemiCore is a dietary supplement, not a prescription treatment, and it isn't intended to diagnose, treat, cure, or prevent any condition. Individual experiences vary.</p>
+      <p class="small">If you have a diagnosed bladder or pelvic floor condition, this is worth a conversation with your doctor before you start anything new.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec-soft">
+  <div class="wrap-narrow">
+    <p class="eyebrow">Before you click through</p>
+    <h2>You don't have to decide anything today.</h2>
+    <p style="margin-bottom:24px;">Not whether this is "the answer." Nobody can promise that from behind a screen, and you should be skeptical of anyone who does. The only thing worth deciding right now is whether you want to actually look — instead of continuing to just manage around the problem indefinitely.</p>
+    <div class="preframe reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5l3 2"/></svg>
+      <p>The link below takes you to the official product page. It opens with a short video walking through the mechanism in more detail, and there's an order button further down the page once you've seen what you need to see — no pressure to click it before then.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="final-cta reveal">
+      <p class="eyebrow">Last thing</p>
+      <h2>Go see for yourself.</h2>
+      <p>Not to convince you of anything — just to name the pattern out loud so you didn't have to be the first one to say it.</p>
+      <a href="#" data-cta class="cta-btn">
+        See the official page
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <p style="font-size:12.5px; color:rgba(255,255,255,.65); margin-top:14px;">Affiliate link — we may earn a commission if you buy, at no extra cost to you.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="foot-disclosure">
+      This page is an independent editorial note and is not operated or endorsed by the manufacturer of FemiCore. As an affiliate, the publisher may earn a commission on qualifying purchases made through the link above, at no extra cost to you. Claims about the product's formulation and endorsement reflect the manufacturer's own positioning, not independent verification. FemiCore is a dietary supplement, not intended to diagnose, treat, cure, or prevent any disease, and these statements have not been evaluated by the Food and Drug Administration. Individual results vary. Consult a physician before beginning any new supplement, particularly if you have an existing medical condition or take prescription medication.
+    </p>
+    <div class="foot-links">
+      <span>© 2026</span>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <a href="#" data-cta class="cta-btn">See the official page</a>
+</div>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal, .stagger');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
